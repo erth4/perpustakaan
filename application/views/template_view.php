@@ -206,7 +206,7 @@
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    Perpustakaan v0.1 Alpha | Copyright Rehan Software
+                    Perpustakaan v0.1 Alpha | Copyright
                 </div>
                 <div class="clearfix"></div>
             </footer>

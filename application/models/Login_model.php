@@ -12,6 +12,14 @@ class Login_model extends CI_Model {
 		}
 	}
 
+	public function generateID(){
+		$query = $this->db->order_by('ID_ANGGOTA', 'DESC')->limit(1)->get('anggota')->row('ID_ANGGOTA');
+		$lastNo = substr($query, 3);
+		$next = $lastNo + 1;
+		$kd = 'AGT';
+		return $kd.sprintf('%03s', $next);
+	}
+
 	public function userCheck(){
 		$akses = $this->input->post('akses');
 		$username = $this->input->post('username');
@@ -32,6 +40,25 @@ class Login_model extends CI_Model {
 			);
 			
 			$this->session->set_userdata($data);
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function userRegister(){
+		$data = array(
+			'ID_ANGGOTA'	=> $this->generateID(),
+			'USERNAME'		=> $this->input->post('username'),
+			'PASSWORD'		=> md5($this->input->post('password')),
+			'FULL_NAME'		=> $this->input->post('nama'),
+			'GENDER'		=> $this->input->post('gender'),
+			'TELP'			=> $this->input->post('telp'),
+			'D_CREATED'		=> date('Ymd')
+			 );
+
+		$this->db->insert('anggota', $data);
+		if($this->db->affected_rows() > 0){
 			return true;
 		}else{
 			return false;

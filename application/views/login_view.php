@@ -44,9 +44,8 @@
               ?>
               <div style="margin-bottom: 20px;">
                 <select name="akses" id="akses" class="form-control">
-                  <option value="admin">Administrator</option>
-                  <option value="petugas">Petugas</option>
-                  <option value="user">Mahasiswa</option>
+                  <option value="admin">Administrator/Petugas</option>
+                  <option value="user" selected>Mahasiswa</option>
                 </select>
               </div>
               <div>
@@ -56,7 +55,9 @@
                 <input type="password" class="form-control" name="password" placeholder="Password" />
               </div>
               <div>
-                <input type="submit" name="login" class="btn btn-default submit pull-right" value="Login" />
+                <button class="btn btn-default submit pull-left">Login</button>
+                <button type="button" onclick="window.location.href='<?php echo base_url('register'); ?>'" class="btn btn-default submit pull-right">Register</button>
+                
               </div>
 
               <div class="clearfix"></div>
@@ -67,7 +68,7 @@
 
                 <div>
                   <h1><i class="fa fa-book"></i>  Perpustakaan</h1>
-                  <p>Copyright © <?php echo date('Y') ?> All Rights Reserved. Rehan Software Company. Privacy and Terms</p>
+                  <p>Copyright © <?php echo date('Y') ?> All Rights Reserved. Privacy and Terms</p>
                 </div>
               </div>
             </form>
